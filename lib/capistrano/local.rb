@@ -14,7 +14,7 @@ class Capistrano::Local < Capistrano::SCM
     end
 
     def release
-      on release_roles :all do |host|
+      on release_roles :all, in: :parallel do |host|
         file_list = Dir.glob(repo_url + '/*').concat(Dir.glob(repo_url + '/.[^.]*'))
         file_list.each { |r| upload! r, release_path, recursive: true }
       end
@@ -39,8 +39,8 @@ class Capistrano::Local < Capistrano::SCM
       end
 
       # uploading and unpacking
-      on release_roles :all do |host|
-        upload! archive, repo_path
+      on release_roles :all, in: :parallel do |host|
+        upload! archive, repo_path, verbose: false
         remote_archive = File.join(repo_path, File.basename(archive))
         execute :tar, 'xzf', remote_archive, '-C', release_path
         execute :rm, '-f', remote_archive

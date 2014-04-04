@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = "capistrano-scm-local"
-  gem.version       = '0.1.0'
+  gem.version       = '0.1.1'
   gem.authors       = ["Boris Gorbylev"]
   gem.email         = ["ekho@ekho.name"]
   gem.description   = %q{Capistrano extension for deploying form local directory}

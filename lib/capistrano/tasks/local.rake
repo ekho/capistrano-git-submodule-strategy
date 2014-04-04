@@ -24,7 +24,6 @@ namespace :local do
     on release_roles :all do
       within repo_path do
         execute :mkdir, '-p', release_path
-        strategy.release
       end
     end
     strategy.release
