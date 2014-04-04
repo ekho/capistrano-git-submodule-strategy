@@ -20,6 +20,6 @@ set :local_strategy, :archive
 set :repo_url, 'path/to/source'
 ```
 
-local_strategy can be :default or :archive
-:default - directly uploads folder
-:archive - makes tar.gz, uploads it and unpack
+:local_strategy can be :default or :archive.
+**:default** - directly uploads folder;
+**:archive** - makes tar.gz, uploads it and unpack.
