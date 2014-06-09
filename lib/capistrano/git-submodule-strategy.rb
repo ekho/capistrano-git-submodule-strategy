@@ -26,6 +26,7 @@ class Capistrano::Git
     # and copy everything to the release path
     def release
       git :checkout, fetch(:branch)
+      git :rebase, "origin/#{fetch(:branch)}", fetch(:branch)
       git :submodule, :update, '--init', '--recursive'
       context.execute "rsync -ar --exclude=.git\* #{repo_path}/ #{release_path}"
     end
