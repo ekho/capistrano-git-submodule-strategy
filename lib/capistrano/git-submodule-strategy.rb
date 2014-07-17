@@ -19,6 +19,8 @@ class Capistrano::Git
         context.error "Branch `#{fetch(:branch)}` not found in repo `#{repo_url}`"
         return false
       end
+
+      true
     end
 
     def clone
