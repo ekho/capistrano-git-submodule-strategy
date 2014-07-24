@@ -6,7 +6,7 @@ class Capistrano::Git
     include Capistrano::Git::DefaultStrategy
 
     def test
-      test! " [ -d #{repo_path}/.git ] "
+      test! " [ -f #{repo_path}/HEAD ] "
     end
 
     def check
@@ -24,7 +24,7 @@ class Capistrano::Git
     end
 
     def clone
-      git :clone, '-b', fetch(:branch), '--recursive', repo_url, repo_path
+      git :clone, '--mirror', repo_url, repo_path
     end
 
     def update
@@ -35,10 +35,8 @@ class Capistrano::Git
     # make sure the submodules are up-to-date
     # and copy everything to the release path
     def release
-      git :checkout, fetch(:branch)
-      git :reset, '--hard', "origin/#{fetch(:branch)}"
-      git :submodule, :update, '--init', '--recursive'
-      context.execute "rsync -ar --exclude=.git\* #{repo_path}/ #{release_path}"
+      git :clone, '--depth=1', '--recursive', '-b', fetch(:branch), "file://#{repo_path}", release_path
+      context.execute("find #{release_path} -name '.git*' | xargs -I {} rm -rfv {}")
     end
   end
 end
