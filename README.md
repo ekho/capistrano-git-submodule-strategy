@@ -1,8 +1,8 @@
-= capistrano-git-submodule-strategy
+# capistrano-git-submodule-strategy
 
 Git submodule support for Capistrano 3 [![Gem Version](https://badge.fury.io/rb/capistrano-git-submodule-strategy.svg)](http://badge.fury.io/rb/capistrano-git-submodule-strategy)
 
-== Using
+## Using
 
 Capfile
 ```ruby
@@ -20,7 +20,7 @@ set :scm, :git
 set :git_strategy, Capistrano::Git::SubmoduleStrategy
 ```
 
-== Contributing to capistrano-git-submodule-strategy
+## Contributing to capistrano-git-submodule-strategy
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
