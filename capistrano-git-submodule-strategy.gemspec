@@ -5,25 +5,26 @@
 
 Gem::Specification.new do |s|
   s.name = "capistrano-git-submodule-strategy"
-  s.version = "0.1.7"
+  s.version = "0.1.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Boris Gorbylev"]
-  s.date = "2014-07-25"
+  s.date = "2014-08-25"
   s.description = "Git submodule support for Capistrano 3"
   s.email = "ekho@ekho.name"
   s.extra_rdoc_files = [
     "LICENSE",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
+    "capistrano-git-submodule-strategy.gemspec",
     "lib/capistrano-git-submodule-strategy.rb",
     "lib/capistrano/git-submodule-strategy.rb",
     "test/helper.rb",
