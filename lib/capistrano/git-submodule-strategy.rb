@@ -35,7 +35,7 @@ class Capistrano::Git
     # make sure the submodules are up-to-date
     # and copy everything to the release path
     def release
-      unless context.test(:test, '-e', release_path) && context.test(:ls, '-A', release_path)
+      unless context.test(:test, '-e', release_path) && context.test("ls -A #{release_path} | read linevar")
         git :clone, '--depth=1', '--recursive', '-b', fetch(:branch), "file://#{repo_path}", release_path
         context.execute("find #{release_path} -name '.git*' | xargs -I {} rm -rfv {}")
       end
