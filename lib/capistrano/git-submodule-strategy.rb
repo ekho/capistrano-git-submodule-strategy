@@ -37,7 +37,9 @@ class Capistrano::Git
     def release
       unless context.test(:test, '-e', release_path) && context.test("ls -A #{release_path} | read linevar")
         git :clone, '--depth=1', '--recursive', '-b', fetch(:branch), "file://#{repo_path}", release_path
-        context.execute("find #{release_path} -name '.git*' | xargs -I {} rm -rfv {}")
+        unless fetch(:git_keep_meta, false)
+          context.execute("find #{release_path} -name '.git*' | xargs -I {} rm -rfv {}")
+        end
       end
     end
   end
