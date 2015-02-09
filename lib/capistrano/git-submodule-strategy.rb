@@ -40,7 +40,7 @@ class Capistrano::Git
         if fetch(:git_keep_meta, false)
           git :remote, 'set-url', 'origin', repo_url
         else
-          context.execute("find #{release_path} -name '.git*' -printf '\"%p\"" + '\n' + "' | xargs -I {} rm -rfv {}")
+          context.execute("find #{release_path} -name '.git*' | xargs -I {} rm -rfv '{}'")
         end
       end
     end

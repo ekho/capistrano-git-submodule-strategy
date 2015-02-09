@@ -49,3 +49,5 @@ pkg
 #*.rbc
 
 /.idea/
+
+*.gem
