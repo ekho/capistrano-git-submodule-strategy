@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
     "test/helper.rb",
     "test/test_capistrano-git-local.rb"
   ]
-  s.homepage = "http://github.com/i-ekho/capistrano-git-submodule-strategy"
+  s.homepage = "http://github.com/ekho/capistrano-git-submodule-strategy"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.23"
@@ -63,4 +63,3 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<capistrano>, ["~> 3.1"])
   end
 end
-

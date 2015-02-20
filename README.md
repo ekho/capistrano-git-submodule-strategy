@@ -11,7 +11,7 @@ require 'capistrano/git-submodule-strategy'
 
 Gemfile
 ```ruby
-gem 'capistrano-git-submodule-strategy', '~> 0.1', :github => 'i-ekho/capistrano-git-submodule-strategy'
+gem 'capistrano-git-submodule-strategy', '~> 0.1', :github => 'ekho/capistrano-git-submodule-strategy'
 ```
 
 deploy.rb
