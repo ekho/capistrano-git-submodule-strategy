@@ -38,10 +38,27 @@ class Capistrano::Git
       unless context.test(:test, '-e', release_path) && context.test("ls -A #{release_path} | read linevar")
         git :clone, (fetch(:git_keep_meta, false) ? '' : '--depth=1'), '--recursive', '-b', fetch(:branch), "file://#{repo_path}", release_path
         if fetch(:git_keep_meta, false)
-          git :remote, 'set-url', 'origin', repo_url
+          context.within_only release_path do
+            git :remote, 'set-url', 'origin', repo_url
+          end
         else
           context.execute("find #{release_path} -name '.git*' | xargs -I {} rm -rfv '{}'")
         end
+      end
+    end
+  end
+end
+
+# shit hack to execute command only in specified directory
+module SSHKit
+  module Backend
+    class Abstract
+      def within_only(directory, &block)
+        pwd = @pwd
+        @pwd = []
+        within directory, &block
+      ensure
+        @pwd = pwd
       end
     end
   end
