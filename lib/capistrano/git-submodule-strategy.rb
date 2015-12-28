@@ -15,7 +15,7 @@ class Capistrano::Git
         return false
       end
 
-      if context.capture(:git, :'ls-remote', repo_url).split("\n").select{ |i| i.include?("refs/heads/#{fetch(:branch)}") }.empty?
+      if context.capture(:git, :'ls-remote', repo_url, fetch(:branch)).empty?
         context.error "Branch `#{fetch(:branch)}` not found in repo `#{repo_url}`"
         return false
       end
@@ -42,7 +42,8 @@ class Capistrano::Git
             git :remote, 'set-url', 'origin', repo_url
           end
         else
-          context.execute("find #{release_path} -name '.git*' | xargs -I {} rm -rfv '{}'")
+          verbose = Rake.application.options.trace ? 'v' : ''
+          context.execute("find #{release_path} -name '.git*' | xargs -I {} rm -rf#{verbose} '{}'")
         end
       end
     end
