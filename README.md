@@ -21,7 +21,7 @@ set :git_strategy, Capistrano::Git::SubmoduleStrategy
 ```
 Optionally you can keep git metadata (.git directory)
 ```ruby
-set ::git_keep_meta, true
+set :git_keep_meta, true
 ```
 
 ## Contributing to capistrano-git-submodule-strategy
