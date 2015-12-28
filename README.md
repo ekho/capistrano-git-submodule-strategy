@@ -4,20 +4,24 @@ Git submodule support for Capistrano 3 [![Gem Version](https://badge.fury.io/rb/
 
 ## Using
 
-Capfile
+####Capfile
 ```ruby
 require 'capistrano/git-submodule-strategy'
 ```
 
-Gemfile
+####Gemfile
 ```ruby
 gem 'capistrano-git-submodule-strategy', '~> 0.1', :github => 'ekho/capistrano-git-submodule-strategy'
 ```
 
-deploy.rb
+####deploy.rb
 ```ruby
 set :scm, :git
 set :git_strategy, Capistrano::Git::SubmoduleStrategy
+```
+Optionally you can keep git metadata (.git directory)
+```ruby
+set ::git_keep_meta, true
 ```
 
 ## Contributing to capistrano-git-submodule-strategy
