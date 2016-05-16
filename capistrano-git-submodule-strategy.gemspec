@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/ekho/capistrano-git-submodule-strategy"
   s.licenses = ["MIT"]
-  s.rubygems_version = "2.4.5.1"
+  s.rubygems_version = "2.5.1"
   s.summary = "Git submodule support for Capistrano 3"
 
   if s.respond_to? :specification_version then
