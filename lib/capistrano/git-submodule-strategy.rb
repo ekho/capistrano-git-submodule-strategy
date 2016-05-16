@@ -36,7 +36,7 @@ class Capistrano::Git
     # and copy everything to the release path
     def release
       unless context.test(:test, '-e', release_path) && context.test("ls -A #{release_path} | read linevar")
-        git :clone, "--reference #{repo_path}", (fetch(:git_keep_meta, false) ? '' : '--depth=1'), '-b', fetch(:branch), repo_url, release_path
+        git :clone, "--reference #{repo_path}", '--dissociate', (fetch(:git_keep_meta, false) ? '' : '--depth=1'), '-b', fetch(:branch), repo_url, release_path
         context.within_only release_path do
           git :submodule, 'update', '--init', '--recursive'
         end
