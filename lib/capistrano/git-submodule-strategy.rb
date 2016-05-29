@@ -35,15 +35,26 @@ class Capistrano::Git
     # make sure the submodules are up-to-date
     # and copy everything to the release path
     def release
-      unless context.test(:test, '-e', release_path) && context.test("ls -A #{release_path} | read linevar")
-        git :clone, "--reference #{repo_path}", '--dissociate', (fetch(:git_keep_meta, false) ? '' : '--depth=1'), '-b', fetch(:branch), repo_url, release_path
+      return if context.test(:test, '-e', release_path) && context.test("ls -A #{release_path} | read linevar")
+
+      git_version = context.capture(:git, '--version').strip.match('^git version (\d+(?:\.\d+)+)$')
+
+      if git_version.nil? || git_version[1] < '2.3.0'
+        git :clone, (fetch(:git_keep_meta, false) ? '' : '--depth=1'), '-b', fetch(:branch), "file://#{repo_path}", release_path
         context.within_only release_path do
-          git :submodule, 'update', '--init', '--recursive'
+          git :remote, 'set-url', 'origin', repo_url
         end
-        unless fetch(:git_keep_meta, false)
-          verbose = Rake.application.options.trace ? 'v' : ''
-          context.execute("find #{release_path} -name '.git*' | xargs -I {} rm -rf#{verbose} '{}'")
-        end
+      else
+        git :clone, "--reference #{repo_path}", '--dissociate', (fetch(:git_keep_meta, false) ? '' : '--depth=1'), '-b', fetch(:branch), repo_url, release_path
+      end
+
+      context.within_only release_path do
+        git :submodule, 'update', '--init', '--recursive'
+      end
+
+      unless fetch(:git_keep_meta, false)
+        verbose = Rake.application.options.trace ? 'v' : ''
+        context.execute("find #{release_path} -name '.git*' | xargs -I {} rm -rf#{verbose} '{}'")
       end
     end
   end
