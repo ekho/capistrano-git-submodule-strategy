@@ -1,6 +1,6 @@
-# capistrano-git-submodule-strategy
+# capistrano-git-submodule-strategy [![Gem](https://img.shields.io/gem/v/capistrano-git-submodule-strategy.svg?maxAge=2592000)](https://github.com/ekho/capistrano-git-submodule-strategy) [![Gem](https://img.shields.io/gem/dt/capistrano-git-submodule-strategy.svg?maxAge=2592000)](https://github.com/ekho/capistrano-git-submodule-strategy)
 
-Git submodule support for Capistrano 3 [![Gem Version](https://badge.fury.io/rb/capistrano-git-submodule-strategy.svg)](http://badge.fury.io/rb/capistrano-git-submodule-strategy)
+Git submodule support for Capistrano 3 
 
 ## Using
 
