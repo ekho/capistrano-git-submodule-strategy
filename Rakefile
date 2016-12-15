@@ -17,12 +17,12 @@ Jeweler::Tasks.new do |gem|
   gem.name = "capistrano-git-submodule-strategy"
   gem.homepage = "http://github.com/ekho/capistrano-git-submodule-strategy"
   gem.license = "MIT"
-  gem.summary = %Q{Git submodule support for Capistrano 3}
-  gem.description = %Q{Git submodule support for Capistrano 3}
+  gem.summary = %Q{Git submodule support for Capistrano 3.0-3.6}
+  gem.description = %Q{Git submodule support for Capistrano 3.0-3.6. For Capistrano 3.7+ use new plugin https://github.com/ekho/capistrano-git-with-submodules}
   gem.email = "ekho@ekho.name"
   gem.authors = ["Boris Gorbylev"]
   gem.require_paths = ["lib"]
-  gem.add_dependency 'capistrano', '~> 3.1'
+  gem.add_dependency 'capistrano', ['>= 3.1.0', '< 3.7']
 end
 Jeweler::RubygemsDotOrgTasks.new
 
