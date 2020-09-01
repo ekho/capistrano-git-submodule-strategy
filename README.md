@@ -4,6 +4,8 @@ Git submodule support for Capistrano 3.0-3.6.*
 
 For Capistrano 3.7+ use new [capistrano-git-with-submodules](https://github.com/ekho/capistrano-git-with-submodules)
 
+*Project is not in an active development and support.*
+
 
 ## Using
 
